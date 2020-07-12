@@ -17,7 +17,7 @@
     <div class="navbar-fixed hide-on-large-only">
         <nav class="teal darken-4">
             <div class="nav-wrapper">
-                <ul class="bot-nav row tabs"></ul>
+                <ul class="bot-nav row"></ul>
             </div>
         </nav>
     </div>
@@ -55,6 +55,9 @@
     <script src="https://use.fontawesome.com/releases/v5.13.1/js/all.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/api.js"></script>
+    <script src="js/idb/lib/idb.js"></script>
+    <script src="js/bolaku_db.js"></script>
+    <script src="js/listLeague.js"></script>
     <script>
         // REGISTER SERVICE WORKER
         if ("serviceWorker" in navigator) {
@@ -71,6 +74,7 @@
         } else {
             console.log("ServiceWorker belum didukung browser ini.");
         }
+        getLeague()
     </script>
 </body>
 

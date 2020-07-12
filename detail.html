@@ -14,19 +14,10 @@
 </head>
 
 <body>
-    <div class="navbar-fixed hide-on-large-only">
-        <nav class="teal darken-4">
-            <div class="nav-wrapper">
-                <ul class="bot-nav row"></ul>
-            </div>
-        </nav>
-    </div>
     <nav class="nav-extended teal darken-4" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo"><img src="logo.png" alt="Logo BolaKu" width="60"></a>
-                <ul class="top-nav right hide-on-med-and-down">
-                </ul>
+                <a href="index.html" class="brand-logo left"><i class="large material-icons">arrow_back</i></a>
             </div>
         </div>
     </nav>
@@ -57,6 +48,7 @@
     <script src="js/api.js"></script>
     <script src="js/idb/lib/idb.js"></script>
     <script src="js/bolaku_db.js"></script>
+    <script src="js/detailLeague.js"></script>
     <script>
         // REGISTER SERVICE WORKER
         if ("serviceWorker" in navigator) {
@@ -73,7 +65,6 @@
         } else {
             console.log("ServiceWorker belum didukung browser ini.");
         }
-
         getLeagueId();
     </script>
 </body>

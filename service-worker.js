@@ -1,4 +1,4 @@
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "BolaKu-v1";
 var urlsToCache = [
     "/",
     "/index.html",
@@ -6,9 +6,31 @@ var urlsToCache = [
     "pages/home.html",
     "pages/contact.html",
     "pages/about.html",
+    "/detail.html",
     "js/nav.js",
     "js/api.js",
-    "js/materialize.min.js"
+    "js/materialize.min.js",
+    "js/bolaku_db.js",
+    "js/idb/lib/idb.js",
+    "js/listLeague.js",
+    "js/detailLeague.js",
+    "css/materialize.min.css",
+    "css/style.css",
+    "css/style.scss",
+    "css/style.css.map",
+    "favicon-32x32.png",
+    "logo.png",
+    "profile.jpeg",
+    "img/2002.png",
+    "img/2003.png",
+    "img/2014.png",
+    "img/2015.png",
+    "img/2019.png",
+    "img/2021.png",
+    "img/fb.png",
+    "img/gmail.png",
+    "img/linkedin.png",
+    "img/github.webp",
 ];
 
 self.addEventListener("install", function (event) {
@@ -48,7 +70,6 @@ self.addEventListener("activate", function (event) {
             return Promise.all(
                 cacheNames.map(function (cacheName) {
                     if (cacheName != CACHE_NAME) {
-                        console.log("ServiceWorker: cache " + cacheName + " dihapus");
                         return caches.delete(cacheName);
                     }
                 })

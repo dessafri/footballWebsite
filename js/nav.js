@@ -39,7 +39,6 @@ function loadPage(page) {
                 if (page == "home" || page == "") {
                     var collaps = document.querySelectorAll('.collapsible');
                     var init = M.Collapsible.init(collaps);
-                    getLeague()
                 }
             } else if (this.status == 404) {
                 content.innerHTML = "<p>Halaman tidak ditemukan.</p>";
