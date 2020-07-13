@@ -7,6 +7,8 @@ var urlsToCache = [
     "pages/contact.html",
     "pages/about.html",
     "/detail.html",
+    "pages/myfavorite.html",
+    "/team.html",
     "js/nav.js",
     "js/api.js",
     "js/materialize.min.js",
@@ -14,6 +16,8 @@ var urlsToCache = [
     "js/idb/lib/idb.js",
     "js/listLeague.js",
     "js/detailLeague.js",
+    "js/team.js",
+    "js/favoriteTeams.js",
     "css/materialize.min.css",
     "css/style.css",
     "css/style.scss",
@@ -42,9 +46,9 @@ self.addEventListener("install", function (event) {
 });
 
 self.addEventListener("fetch", function (event) {
-    var base_url = "https://api.football-data.org/v2/";
+    var url = "https://api.football-data.org/v2/";
 
-    if (event.request.url.indexOf(base_url) > -1) {
+    if (event.request.url.indexOf(url) > -1) {
         event.respondWith(
             caches.open(CACHE_NAME).then(function (cache) {
                 return fetch(event.request).then(function (response) {

@@ -14,24 +14,16 @@
 </head>
 
 <body>
-    <div class="navbar-fixed hide-on-large-only">
-        <nav class="teal darken-4">
-            <div class="nav-wrapper">
-                <ul class="bot-nav row"></ul>
-            </div>
-        </nav>
-    </div>
     <nav class="nav-extended teal darken-4" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo"><img src="logo.png" alt="Logo BolaKu" width="60"></a>
-                <ul class="top-nav right hide-on-med-and-down">
-                </ul>
+                <a href="index.html" class="brand-logo left"><i class="large material-icons">arrow_back</i></a>
             </div>
         </div>
     </nav>
     <main>
-        <div class="body-content" id="body-content"></div>
+        <div class="body-content" id="body-content">
+        </div>
     </main>
     <footer class="page-footer grey lighten-3">
         <div class="container">
@@ -53,12 +45,10 @@
 
     <script src="js/materialize.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.13.1/js/all.js"></script>
-    <script src="js/nav.js"></script>
     <script src="js/api.js"></script>
     <script src="js/idb/lib/idb.js"></script>
     <script src="js/bolaku_db.js"></script>
-    <script src="js/listLeague.js"></script>
-    <script src="js/favoriteTeams.js"></script>
+    <script src="js/team.js"></script>
     <script>
         // REGISTER SERVICE WORKER
         if ("serviceWorker" in navigator) {
@@ -75,6 +65,7 @@
         } else {
             console.log("ServiceWorker belum didukung browser ini.");
         }
+        getTeam();
     </script>
 </body>
 

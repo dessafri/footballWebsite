@@ -1,10 +1,10 @@
 let dbPromised = idb.open("BolaKu", 2, function (upgradeDb) {
-    // let teams = upgradeDb.createObjectStore("teams", {
-    //     keyPath: "standings[0].table.team.id"
-    // });
-    // teams.createIndex("standings[0].table.team.name", "standings[0].table.team.name", {
-    //     unique: false
-    // });
+    let favTeams = upgradeDb.createObjectStore("favTeams", {
+        keyPath: "id"
+    });
+    favTeams.createIndex("name", "name", {
+        unique: false
+    });
     let standingOS = upgradeDb.createObjectStore("standings", {
         keyPath: "competition.id"
     });
@@ -26,25 +26,36 @@ function saveStandings(data) {
         })
 }
 
-function saveTeams(data) {
+function getStandings() {
+    return new Promise(function (resolve, reject) {
+        dbPromised.then(function (db) {
+            var tx = db.transaction('standings', 'readonly');
+            var store = tx.objectStore('standings');
+            return store.getAll();
+        }).then(function (items) {
+            resolve(items)
+
+        })
+    });
+}
+
+function saveFavTeam(data) {
     dbPromised.then(function (db) {
-            let tx = db.transaction("teams", "readwrite");
-            let store = tx.objectStore("teams")
+            let tx = db.transaction("favTeams", "readwrite");
+            let store = tx.objectStore("favTeams")
             store.put(data)
             return tx.complete;
         })
         .then(() => {
-            console.log("Data Berhasil Di simpan")
+            console.log("Team Berhasil Di simpan")
         })
 }
 
-function getStandings() {
+function getFavTeams() {
     return new Promise(function (resolve, reject) {
-
-
         dbPromised.then(function (db) {
-            var tx = db.transaction('standings', 'readonly');
-            var store = tx.objectStore('standings');
+            let tx = db.transaction("favTeams", "readonly");
+            let store = tx.objectStore("favTeams")
             return store.getAll();
         }).then(function (items) {
             resolve(items)

@@ -83,23 +83,31 @@ main {
   margin-bottom: 2px;
 }
 
-.detail-league {
+.detail-league,
+.detail-team,
+#body-content-favorite {
   margin-top: 30px;
   width: 100%;
 }
 
 .detail-league,
-.descriptions-league {
+.descriptions-league,
+.detail-team,
+.descriptions-team {
   margin-left: 30px;
 }
 
 @media only screen and (min-width: 900px) {
-  .detail-league {
+  .detail-league,
+  .detail-team {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  .detail-league .descriptions-league {
+  .detail-league .descriptions-league,
+  .detail-league .descriptions-team,
+  .detail-team .descriptions-league,
+  .detail-team .descriptions-team {
     margin-left: 90px;
     padding-top: 30px;
   }

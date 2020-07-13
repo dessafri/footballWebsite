@@ -4,7 +4,7 @@ let authToken = "81e3ce7d778e4e5d9914ae02881ccf03"
 
 function getLeague() {
     if ('caches' in window) {
-        caches.match(url + "competitions?plan=TIER_ONE&areas=2077")
+        caches.match(`${url}competitions?plan=TIER_ONE&areas=2077`)
             .then(function (response) {
                 if (response) {
                     response.json()
@@ -96,5 +96,32 @@ function getLeagueId() {
         })
         .then(resjson => {
             setScoresCompetition(resjson)
+        })
+}
+
+function getTeam() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let idParam = urlParams.get("id");
+    if ('caches' in window) {
+        caches.match(`${url}teams/${idParam}`)
+            .then(function (response) {
+                if (response) {
+                    response.json()
+                        .then(function (data) {
+                            setTeam(data)
+                        });
+                }
+            });
+    }
+    fetch(`${url}teams/${idParam}`, {
+            headers: {
+                "X-Auth-Token": authToken
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(resjson => {
+            setTeam(resjson)
         })
 }

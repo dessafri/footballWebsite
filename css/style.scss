@@ -89,22 +89,28 @@ main {
     }
 }
 
-.detail-league {
+.detail-league,
+.detail-team {
     margin-top: 30px;
     width: 100%;
 
 }
 
 .detail-league,
-.descriptions-league {
+.descriptions-league,
+.detail-team,
+.descriptions-team {
     margin-left: 30px;
 }
 
 @media only screen and (min-width: 900px) {
-    .detail-league {
+
+    .detail-league,
+    .detail-team {
         display: flex;
 
-        .descriptions-league {
+        .descriptions-league,
+        .descriptions-team {
             margin-left: 90px;
             padding-top: 30px;
         }

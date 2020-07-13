@@ -15,7 +15,7 @@ function setCompetitionData(result) {
                 <hr>
                 <li>Start Date : ${data.currentSeason.startDate}</li>
                 <li>End Date : ${data.currentSeason.endDate}</li>
-                <li>Current MatchDay : ${data.currentSeason.currentMatchday}</li>
+                <li>Current Match Day : ${data.currentSeason.currentMatchday}</li>
                 </div></a>
             </div>
         </div>`

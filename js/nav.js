@@ -37,8 +37,10 @@ function loadPage(page) {
             if (this.status == 200) {
                 content.innerHTML = xhttp.responseText;
                 if (page == "home" || page == "") {
-                    var collaps = document.querySelectorAll('.collapsible');
-                    var init = M.Collapsible.init(collaps);
+                    getLeague();
+                }
+                if (page == "myfavorite") {
+                    readFavteam();
                 }
             } else if (this.status == 404) {
                 content.innerHTML = "<p>Halaman tidak ditemukan.</p>";
