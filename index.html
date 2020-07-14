@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -59,23 +60,7 @@
     <script src="js/bolaku_db.js"></script>
     <script src="js/listLeague.js"></script>
     <script src="js/favoriteTeams.js"></script>
-    <script>
-        // REGISTER SERVICE WORKER
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", function () {
-                navigator.serviceWorker
-                    .register("/service-worker.js")
-                    .then(function () {
-                        console.log("Pendaftaran ServiceWorker berhasil");
-                    })
-                    .catch(function () {
-                        console.log("Pendaftaran ServiceWorker gagal");
-                    });
-            });
-        } else {
-            console.log("ServiceWorker belum didukung browser ini.");
-        }
-    </script>
+    <script src="js/cek_sw.js"></script>
 </body>
 
 </html>

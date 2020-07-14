@@ -1,0 +1,15 @@
+{
+    "name": "BolaKu",
+    "gcm_sender_id": "485317730676",
+    "short_name": "BolaKu",
+    "theme_color": "#004d40",
+    "description": "Aplikasi Bola Berbasis PWA",
+    "background_color": "#004d40",
+    "display": "standalone",
+    "start_url": "/index.html",
+    "icons": [{
+        "src": "logo.png",
+        "sizes": "513x513",
+        "type": "image/png"
+    }]
+}
