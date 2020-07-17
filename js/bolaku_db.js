@@ -16,14 +16,11 @@ let dbPromised = idb.open("BolaKu", 2, function (upgradeDb) {
 
 function saveStandings(data) {
     dbPromised.then(function (db) {
-            let tx = db.transaction("standings", "readwrite");
-            let store = tx.objectStore("standings")
-            store.put(data)
-            return tx.complete;
-        })
-        .then(() => {
-            console.log("Data Berhasil Di simpan")
-        })
+        let tx = db.transaction("standings", "readwrite");
+        let store = tx.objectStore("standings")
+        store.put(data)
+        return tx.complete;
+    })
 }
 
 function getStandings() {
