@@ -17,7 +17,7 @@ function setTeam(result) {
                         <li><span>Email : </span>${data.email}</li>
                     </ul>
                 </div>
-                <div class"subscribe" id="subscribe" style="margin-top: 50px; margin-left: 30px;"><a class="btn-floating btn-large pulse"><i class="material-icons">favorite</i></a></div>
+                <div id="button-team" class=""></div>
             </div>
             <div class="detail" style="margin-top: 40px; margin-bottom: 40px;">
                 <div class="content container" id="content-detail">
@@ -62,8 +62,70 @@ function setTeam(result) {
     })
     document.getElementById("data-staff-and-player").innerHTML = squad
 
-    document.getElementById("subscribe").addEventListener("click", () => {
-        saveFavTeam(data)
+    let idTeam = data.id;
+    getFavTeams().then(items => {
+        cekFavTeams(items)
     })
+
+    function cekFavTeams(items) {
+        let subscribeTeam = `<div class"subscribe" id="subscribe" style="margin-top: 50px; margin-left: 30px;"><a class="btn-floating btn-large pulse"><i class="material-icons">favorite</i></a></div>`
+
+        let deleteTeam = ""
+
+        document.getElementById("button-team").innerHTML = ""
+
+        if (items.length == 0) {
+            document.getElementById("button-team").classList.remove("delete");
+            document.getElementById("button-team").classList.add("subscribe");
+            document.getElementById("button-team").innerHTML = subscribeTeam;
+
+        } else {
+            items.forEach(items => {
+                if (idTeam == items.id) {
+                    document.getElementById("button-team").classList.remove("subscribe");
+                    document.getElementById("button-team").classList.add("delete");
+                    deleteTeam += `<div class"delete" id="delete" style="margin-top: 50px; margin-left: 30px;" data-id="${items.id}" data-name="${items.name}"><a class="btn-floating btn-large pulse red"><i class="material-icons">delete</i></a></div>`
+                    document.getElementById("button-team").innerHTML = deleteTeam
+                } else {
+                    document.getElementById("button-team").classList.remove("delete");
+                    document.getElementById("button-team").classList.add("subscribe");
+                    document.getElementById("button-team").innerHTML = subscribeTeam
+                }
+            })
+        }
+
+        function hasClass(element, cls) {
+            return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+        }
+
+        let elem = document.getElementById("button-team")
+        if (hasClass(elem, "subscribe") == true) {
+            document.getElementById("subscribe").addEventListener("click", () => {
+                saveFavTeam(data)
+                elem.classList.remove("subscribe")
+                elem.classList.add("delete")
+                getFavTeams().then(items => {
+                    cekFavTeams(items)
+                })
+            })
+        } else {
+            document.getElementById("delete").addEventListener("click", (event) => {
+                let id = document.getElementById("delete").getAttribute("data-id");
+                let name = document.getElementById("delete").getAttribute("data-name");
+                id = parseInt(id);
+                deleteFavTeams(id, name)
+                elem.classList.remove("delete")
+                elem.classList.add("subscribe")
+                getFavTeams().then(items => {
+                    cekFavTeams(items)
+                })
+            })
+        }
+        // console.log(items)
+
+
+    }
+
+
 
 }

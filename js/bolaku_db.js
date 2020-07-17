@@ -46,8 +46,32 @@ function saveFavTeam(data) {
             store.put(data)
             return tx.complete;
         })
-        .then(() => {
-            console.log("Team Berhasil Di simpan")
+        .then(function () {
+            const title = "Data Team Berhasil disimpan!";
+            console.log(title);
+            const options = {
+                body: `Club ${data.name} sudah tersimpan, cek Team Favorite.`,
+                badge: "../favicon-32x32.png",
+                icon: "../favicon-32x32.png",
+                actions: [{
+                        action: "yes-action",
+                        title: "Ya"
+                    },
+                    {
+                        action: "no-action",
+                        title: "Tidak"
+                    },
+                ],
+            };
+            if (Notification.permission === "granted") {
+                navigator.serviceWorker.ready.then(function (registration) {
+                    registration.showNotification(title, options);
+                });
+            } else {
+                M.toast({
+                    html: `Club ${data.name} berhasil disimpan, cek Team Favorite.`,
+                });
+            }
         })
 }
 
@@ -62,4 +86,31 @@ function getFavTeams() {
 
         })
     });
+}
+
+function deleteFavTeams(idTeam, nameTeam) {
+    dbPromised
+        .then(function (db) {
+            let tx = db.transaction("favTeams", "readwrite");
+            let store = tx.objectStore("favTeams");
+            store.delete(idTeam);
+            return tx.complete;
+        })
+        .then(() => {
+            const title = 'Data Team Berhasil Di Hapus !';
+            const options = {
+                'body': `${nameTeam} berhasil dihapus dari list Favorite.`,
+                badge: "../favicon-32x32.png",
+                icon: "../favicon-32x32.png"
+            };
+            if (Notification.permission === 'granted') {
+                navigator.serviceWorker.ready.then(function (registration) {
+                    registration.showNotification(title, options);
+                });
+            } else {
+                M.toast({
+                    html: `${nameTeam} berhasil dihapus dari list Favorite`,
+                });
+            }
+        })
 }

@@ -21,10 +21,15 @@ var urlsToCache = [
     "js/cek_sw.js",
     "css/materialize.min.css",
     "css/style.css",
-    "css/style.scss",
-    "css/style.css.map",
     "favicon-32x32.png",
     "logo.png",
+    "logo72.png",
+    "logo96.png",
+    "logo128.png",
+    "logo144.png",
+    "logo192.png",
+    "logo256.png",
+    "logo384.png",
     "profile.jpeg",
     "img/2002.png",
     "img/2003.png",
@@ -103,4 +108,22 @@ self.addEventListener('push', function (event) {
     event.waitUntil(
         self.registration.showNotification('Push Notification', options)
     );
+});
+self.addEventListener('notificationclick', function (event) {
+    event.notification.close();
+    if (!event.action) {
+        // Penguna menyentuh area notifikasi diluar action
+        console.log('Notification Clicked.');
+        return;
+    }
+    switch (event.action) {
+        case 'yes-action':
+            clients.openWindow('/#myfavorite');
+            break;
+        case 'no-action':
+            break;
+        default:
+            console.log(`Action yang dipilih tidak dikenal: '${event.action}'`);
+            break;
+    }
 });

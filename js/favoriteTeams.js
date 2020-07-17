@@ -42,6 +42,7 @@ function readFavteam() {
                             <li><span>Email : </span>${data.email}</li>
                         </ul>
                      </div>
+                     <div id="delete" style="margin-top: 50px; margin-left: 30px;"><a class="btn-floating btn-large pulse red"><i class="material-icons delete" data-id="${data.id}" data-name="${data.name}">delete</i></a></div>
                      </div>
                      <div class="detail" style="margin-top: 40px;margin-bottom: 40px;">
                         <div class="content container" id="content-detail">
@@ -89,6 +90,17 @@ function readFavteam() {
             document.getElementById("data-staff-and-player").innerHTML = squad
             var elems = document.querySelectorAll('.collapsible');
             var instances = M.Collapsible.init(elems);
+            document.querySelectorAll(".delete").forEach(function (elm) {
+                elm.addEventListener("click", (event) => {
+                    let id = event.target.getAttribute("data-id")
+                    let name = event.target.getAttribute("data-name")
+                    id = parseInt(id)
+                    deleteFavTeams(id, name)
+                    setTimeout(() => {
+                        location.reload()
+                    }, 2000);
+                })
+            })
         }
 
     }
