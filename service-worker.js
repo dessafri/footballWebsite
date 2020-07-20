@@ -1,93 +1,255 @@
-const CACHE_NAME = "BolaKu-v1";
-var urlsToCache = [
-    "/",
-    "/index.html",
-    "/nav.html",
-    "pages/home.html",
-    "pages/contact.html",
-    "pages/about.html",
-    "/detail.html",
-    "pages/myfavorite.html",
-    "/team.html",
-    "js/nav.js",
-    "js/api.js",
-    "js/materialize.min.js",
-    "js/bolaku_db.js",
-    "js/idb/lib/idb.js",
-    "js/listLeague.js",
-    "js/detailLeague.js",
-    "js/team.js",
-    "js/favoriteTeams.js",
-    "js/cek_sw.js",
-    "css/materialize.min.css",
-    "css/style.css",
-    "favicon-32x32.png",
-    "logo.png",
-    "logo72.png",
-    "logo96.png",
-    "logo128.png",
-    "logo144.png",
-    "logo192.png",
-    "logo256.png",
-    "logo384.png",
-    "profile.jpeg",
-    "img/2002.png",
-    "img/2003.png",
-    "img/2014.png",
-    "img/2015.png",
-    "img/2019.png",
-    "img/2021.png",
-    "img/fb.png",
-    "img/gmail.png",
-    "img/linkedin.png",
-    "img/github.webp",
-    "/manifest.json"
-];
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
+
+if (workbox)
+    console.log(`Workbox berhasil dimuat`);
+else
+    console.log(`Workbox gagal dimuat`);
+
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
+
+workbox.precaching.precacheAndRoute([{
+        url: "/index.html",
+        revision: '3'
+    },
+    {
+        url: "/nav.html",
+        revision: '3'
+    },
+    {
+        url: "/offline.html",
+        revision: '3'
+    },
+    {
+        url: "pages/home.html",
+        revision: '3'
+    },
+    {
+        url: "pages/contact.html",
+        revision: '3'
+    },
+    {
+        url: "pages/about.html",
+
+        revision: '3'
+    },
+    {
+        url: "/detail.html",
+        revision: '3'
+    },
+    {
+        url: "pages/myfavorite.html",
+        revision: '3'
+    },
+    {
+        url: "/team.html",
+
+        revision: '3'
+    },
+    {
+        url: "js/nav.js",
+        revision: '3'
+    },
+    {
+        url: "js/api.js",
+        revision: '3'
+    },
+    {
+        url: "js/materialize.min.js",
+        revision: '3'
+    },
+    {
+        url: "js/bolaku_db.js",
+        revision: '3'
+    },
+    {
+        url: "js/idb/lib/idb.js",
+        revision: '3'
+    },
+    {
+        url: "js/listLeague.js",
+
+        revision: '3'
+    },
+    {
+        url: "js/detailLeague.js",
+
+        revision: '3'
+    },
+    {
+        url: "js/team.js",
+
+        revision: '3'
+    },
+    {
+        url: "js/favoriteTeams.js",
+        revision: '3'
+    },
+    {
+        url: "js/cek_sw.js",
+
+        revision: '3'
+    },
+    {
+        url: "/css/materialize.min.css",
+        revision: '3'
+    },
+    {
+        url: "/css/style.css",
+        revision: '3'
+    },
+    {
+        url: "/favicon-32x32.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo72.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo96.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo128.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo144.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo192.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo256.png",
+        revision: '3'
+    },
+    {
+        url: "/logo/logo384.png",
+        revision: '3'
+    },
+    {
+        url: "/profile.jpeg",
+        revision: '3'
+    },
+    {
+        url: "/img/2002.png",
+        revision: '3'
+    },
+    {
+        url: "/img/2003.png",
+        revision: '3'
+    },
+    {
+        url: "/img/2014.png",
+        revision: '3'
+    },
+    {
+        url: "/img/2015.png",
+        revision: '3'
+    },
+    {
+        url: "/img/2019.png",
+        revision: '3'
+    },
+    {
+        url: "/img/2021.png",
+        revision: '3'
+    },
+    {
+        url: "/img/fb.png",
+        revision: '3'
+    },
+    {
+        url: "/img/gmail.png",
+        revision: '3'
+    },
+    {
+        url: "/img/linkedin.png",
+        revision: '3'
+    },
+    {
+        url: "/img/github.webp",
+        revision: '3'
+    },
+    {
+        url: "/img/offline-img.svg",
+        revision: '3'
+    },
+    {
+        url: "/manifest.json",
+        revision: '3'
+    },
+]);
 
 self.addEventListener("install", function (event) {
+    const urls = ['/offline.html'];
+    const cacheName = workbox.core.cacheNames.runtime;
     event.waitUntil(
-        caches.open(CACHE_NAME).then(function (cache) {
-            return cache.addAll(urlsToCache);
+        caches.open(cacheName).then(function (cache) {
+            return cache.addAll(urls);
         })
     );
 });
 
-self.addEventListener("fetch", function (event) {
-    var url = "https://api.football-data.org/v2/";
+const urls = ['/offline.html'];
 
-    if (event.request.url.indexOf(url) > -1) {
-        event.respondWith(
-            caches.open(CACHE_NAME).then(function (cache) {
-                return fetch(event.request).then(function (response) {
-                    cache.put(event.request.url, response.clone());
-                    return response;
-                })
-            })
-        );
-    } else {
-        event.respondWith(
-            caches.match(event.request, {
-                ignoreSearch: true
-            }).then(function (response) {
-                return response || fetch(event.request);
-            })
-        )
+// pages to cache
+
+workbox.routing.registerRoute(new RegExp('/'),
+    async ({
+        event
+    }) => {
+        try {
+            return await workbox.strategies.networkFirst({
+                cacheName: 'BolaKu',
+                plugins: [
+                    new workbox.expiration.Plugin({
+                        maxEntries: 60,
+                        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 hari
+                    }),
+                ],
+            }).handle({
+                event
+            });
+        } catch (error) {
+            return caches.match(urls);
+        }
     }
-});
+);
 
-self.addEventListener("activate", function (event) {
-    event.waitUntil(
-        caches.keys().then(function (cacheNames) {
-            return Promise.all(
-                cacheNames.map(function (cacheName) {
-                    if (cacheName != CACHE_NAME) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
-});
+workbox.routing.registerRoute(
+    /^https:\/\/api\.football\-data\.org\/v2\//,
+    workbox.strategies.staleWhileRevalidate({
+        cacheName: 'football-data-api',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 120,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 hari
+            }),
+        ],
+    })
+);
+
+workbox.routing.registerRoute(
+    /\.(?:png|jpx|css|svg)$/,
+    workbox.strategies.networkFirst({
+        cacheName: 'images',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 25,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 hari
+            }),
+        ],
+    })
+);
+
 
 self.addEventListener('push', function (event) {
     var body;

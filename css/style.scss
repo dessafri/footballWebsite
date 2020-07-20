@@ -103,6 +103,18 @@ main {
     margin-left: 30px;
 }
 
+.image-offline {
+    margin: auto;
+    width: 100%;
+
+    span {
+        display: inline-block;
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+}
+
 @media only screen and (min-width: 900px) {
 
     .detail-league,
@@ -115,6 +127,12 @@ main {
             padding-top: 30px;
         }
     }
+
+    .image-offline {
+        width: 300px;
+        height: 300px;
+        margin-top: 74px;
+    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -125,5 +143,11 @@ main {
     .image {
         display: flex;
         justify-content: center;
+    }
+
+    .image-offline {
+        width: 250px;
+        height: 250px;
+        margin-top: 54px;
     }
 }

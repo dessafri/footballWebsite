@@ -87,8 +87,8 @@ function setCompetitionDataId(result) {
         </div>
         `
     document.getElementById("body-content").innerHTML = competitions
-    var elems = document.querySelectorAll('.tabs');
-    var instances = M.Tabs.init(elems);
+    let elems = document.querySelectorAll('.tabs');
+    let instances = M.Tabs.init(elems);
     let standings = ""
     data.standings[0].table.forEach(data => {
         let logoTeam = data.team.crestUrl.replace(/^http:\/\//i, 'https://');
