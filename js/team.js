@@ -22,7 +22,7 @@ function setTeam(result) {
             <div class="detail" style="margin-top: 40px; margin-bottom: 40px;">
                 <div class="content container" id="content-detail">
                     <div id="list-staff-and-player" class="col s12">
-                        <table class="centered">
+                        <table class="centered responsive-table">
                             <thead>
                                 <tr>
                                     <th>Player Name</th>
