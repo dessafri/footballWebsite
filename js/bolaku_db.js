@@ -26,8 +26,8 @@ function saveStandings(data) {
 function getStandings() {
     return new Promise(function (resolve, reject) {
         dbPromised.then(function (db) {
-            var tx = db.transaction('standings', 'readonly');
-            var store = tx.objectStore('standings');
+            let tx = db.transaction('standings', 'readonly');
+            let store = tx.objectStore('standings');
             return store.getAll();
         }).then(function (items) {
             resolve(items)

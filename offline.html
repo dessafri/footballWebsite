@@ -5,12 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#004d40" />
-    <title>Bolaku</title>
+    <title>Something Wrong</title>
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/manifest.json">
 </head>
@@ -26,28 +23,21 @@
     <nav class="nav-extended teal darken-4" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo"><img src="/logo/logo.png" alt="Logo BolaKu" width="40"></a>
+                <a href="index.html" class="brand-logo"><img src="logo/logo.png" alt="Logo BolaKu" width="50"></a>
                 <ul class="top-nav right hide-on-med-and-down">
                 </ul>
             </div>
         </div>
     </nav>
     <main>
-        <div class="body-content" id="body-content" style="display: none;"></div>
-        <div class="container" id="preloader" style="display: flex; height: 100vh; width: 100%;">
-            <div class="preloader-wrapper big active" style="margin: auto;">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
+        <div class="container">
+            <div class="offline-page" style="display: flex; height: 80vh; width: 100%;">
+                <div class="image-offline">
+                    <img src="img/offline-img.svg" alt="Offline Image" class="responsive-img">
+                    <span>Opss.. You are offline</span>
                 </div>
             </div>
+        </div>
     </main>
     <footer class="page-footer grey lighten-3">
         <div class="container">
@@ -70,20 +60,6 @@
     <script src="js/materialize.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.13.1/js/all.js"></script>
     <script src="js/nav.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/idb/lib/idb.js"></script>
-    <script src="js/bolaku_db.js"></script>
-    <script src="js/listLeague.js"></script>
-    <script src="js/favoriteTeams.js"></script>
-    <script src="js/cek_sw.js"></script>
-    <script>
-        window.onload = () => {
-            setTimeout(() => {
-                document.getElementById("body-content").style.display = "block";
-                document.getElementById("preloader").style.display = "none";
-            }, 2000);
-        }
-    </script>
 </body>
 
 </html>

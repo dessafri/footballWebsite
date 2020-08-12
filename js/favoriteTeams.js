@@ -88,8 +88,8 @@ function readFavteam() {
             document.getElementById("body-content-favorite").innerHTML = favteams
             document.getElementById("list-fav-teams").innerHTML = listTeams
             document.getElementById("data-staff-and-player").innerHTML = squad
-            var elems = document.querySelectorAll('.collapsible');
-            var instances = M.Collapsible.init(elems);
+            let elems = document.querySelectorAll('.collapsible');
+            let instances = M.Collapsible.init(elems);
             document.querySelectorAll(".delete").forEach(function (elm) {
                 elm.addEventListener("click", (event) => {
                     let id = event.target.getAttribute("data-id")

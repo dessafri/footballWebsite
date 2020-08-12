@@ -4,7 +4,7 @@ function setTeam(result) {
     team += `
         <div class="detail-team">
                 <div class="image">
-                    <img src="${data.crestUrl}" alt="${data.name}" width="250">
+                    <img src="${data.crestUrl}" alt="${data.name}" width="250" class="responsive-img">
                 </div>
                 <div class="descriptions-team">
                     <ul>
