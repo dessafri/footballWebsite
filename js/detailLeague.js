@@ -34,7 +34,7 @@ function setCompetitionDataId(result) {
                 </div>
                 <div class="content container" id="content-detail">
                     <div id="standings" class="col s12">
-                        <table class="centered">
+                        <table class="centered responsive-table">
                             <thead>
                                 <tr>
                                     <th>Position</th>
