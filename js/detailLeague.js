@@ -55,7 +55,7 @@ function setCompetitionDataId(result) {
                         </table>
                     </div>
                     <div id="matches" class="col s12">
-                        <table class="centered">
+                        <table class="centered responsive-table">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -70,7 +70,7 @@ function setCompetitionDataId(result) {
                         </table>
                     </div>
                     <div id="topScore" class="col s12">
-                        <table class="centered">
+                        <table class="centered responsive-table">
                             <thead>
                                 <tr>
                                     <th>Player</th>
